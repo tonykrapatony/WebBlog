@@ -8,7 +8,7 @@ $(document).ready(function(){
     });
 
     // news
-    const url = 'https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=69ccb163c2624d7ab8698ab9f1e1b8a6';
+    const url = 'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=69ccb163c2624d7ab8698ab9f1e1b8a66';
 
     $.getJSON( url, function( data ) {
         console.log(data);
