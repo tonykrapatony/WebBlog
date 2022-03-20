@@ -1,0 +1,39 @@
+.article-wrap {
+    display: none;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background: rgb(0, 0, 0, 0.7);
+    z-index: 2;
+}
+.article {
+    width: 80%;
+    height: 70%;
+    margin: 10%;
+    padding: 30px;
+    box-sizing: border-box;
+    /* background: #0c0c0c; */
+    background: #6d6969;
+    color: #B8CDDB;
+    font-family: 'Saira Condensed', sans-serif;
+}
+.article-wrap .close-btn {
+    position: absolute;
+    top: 70px;
+    right: 40px;
+    cursor: pointer;
+}
+.article h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.article ul {
+    list-style: disc;
+    margin-left: 50px;
+}
+.article p, .article ul {
+    font-size: 26px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,243 @@
+/* #0E3673 
+#124291
+#B8CDDB
+*/
+@import url('https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@300;400;700&display=swap');
+@import url(animation.css);
+@import url(article.css);
+
+
+/*font-family: 'Saira Condensed', sans-serif;*/
+body {
+    background: #0c0c0c;
+}
+.header {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    font-family: 'Saira Condensed', sans-serif;
+    font-weight: 400;
+}
+.nav {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    background: #0c0c0c;
+    z-index: 1;
+}
+.nav_logo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 20px 0 0 20px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.nav_logo img {
+    height: 100%;
+    margin-right: 20px;
+}
+.nav_logo span {
+    color: #B8CDDB;
+    font-size: 40px;
+    margin-right: 50px;
+}
+.nav__menu {
+    display: flex;
+    justify-content: space-between;
+    color: #B8CDDB;
+    font-size: 24px;
+    margin-right: 50px;
+}
+.nav__menu-item {
+    cursor: pointer;
+    margin: 0 50px;
+}
+.nav_logo:hover .hover, .nav__menu-item:hover {
+    color: #d7ebf8;
+}
+
+.main {
+    width: 100%;
+    padding-top: 10px;
+    color: #fff;
+    font-family: 'Saira Condensed', sans-serif;
+}
+.slick-prev {left: 25px;}
+.slick-next {right: 25px;}
+.slick-list {
+    width: 90%;
+    margin: 0 auto;
+}
+.slider-item {
+    height: 600px;
+    display: flex !important;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.slider-item h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.slider-item p, .slider-item button {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+.slide-btn {
+    border: 0;
+    border-radius: 5px;
+    padding: 3px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.slider-item button:hover {
+    background: #0c0c0c;
+    color: #B8CDDB;
+}
+.item1 {
+    background: url(../img/img1.jpg) no-repeat center/cover;
+}
+.item2 {
+    background: url(../img/img2.jpg) no-repeat center/cover;
+}
+.item3 {
+    background: url(../img/img3.jpg) no-repeat center/cover;
+}
+.news-container {
+    margin-top: 50;
+    width: 100%;
+    font-family: 'Saira Condensed', sans-serif;
+}
+.news-container h2 {
+    font-size: 46px;
+    font-weight: 700;
+    color: #B8CDDB;
+    text-align: center;
+}
+.news-container p {
+    font-size: 22px;
+    font-weight: 400;
+    color: #B8CDDB;
+    text-align: center;
+}
+.news-container p a {
+    text-decoration: underline;
+}
+.news {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.news-item {
+    width: 40%;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid #B8CDDB;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.news-item h2 {
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+.news-item p {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+.news-item img {
+    width: 80%;
+    margin-bottom: 10px;
+}
+.news-item a {
+    width: 100px;
+    border: 1px solid #B8CDDB;
+    text-align: center;
+    font-size: 20px;
+    color: #B8CDDB;
+}
+.news-item a:hover {
+    background: #B8CDDB;
+    color: #0c0c0c;
+}
+.footer {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Saira Condensed', sans-serif;
+    font-weight: 400;
+}
+.feedback-form {
+    width: 50%;
+}
+.feedback-form form {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.form-firstname {
+    width: 40%;
+    height: 40px;
+    border: 1px solid #B8CDDB;
+    box-sizing: border-box;
+    color: #B8CDDB;
+    background-color: #0c0c0c;
+}
+.form-firstname::placeholder, .form-secondname::placeholder, .form-phone::placeholder, .form-email::placeholder {
+    font-family: 'Saira Condensed', sans-serif;
+    color: #B8CDDB;
+}
+.form-secondname {
+    width: 50%;
+    height: 40px;
+    border: 1px solid #B8CDDB;
+    box-sizing: border-box;
+    color: #B8CDDB;
+    background-color: #0c0c0c;
+}
+.form-phone, .form-email {
+    width: 45%;
+    height: 40px;
+    border: 1px solid #B8CDDB;
+    box-sizing: border-box;
+    color: #B8CDDB;
+    background-color: #0c0c0c;
+} 
+.feedback-form form textarea {
+    width: 90%;
+}
+.form-button {
+    width: 150px;
+    display: block;
+}
+
+.sn-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+}
+.sn-list-item {
+    width: 40px;
+    margin: 0 10px;
+}
+.sn-list-item img {
+    width: 100%;
+}
+.sn-list-item:hover {
+    opacity: 0.8;
+}
