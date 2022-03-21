@@ -26,7 +26,7 @@ body {
     align-items: center;
     position: fixed;
     background: #0c0c0c;
-    z-index: 1;
+    z-index: 5;
 }
 .nav_logo {
     height: 100%;
@@ -110,33 +110,116 @@ body {
 .item3 {
     background: url(../img/img3.jpg) no-repeat center/cover;
 }
-.news-container {
+.sw-container {
     margin-top: 50;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-family: 'Saira Condensed', sans-serif;
 }
-.news-container h2 {
+.sw-container h2 {
     font-size: 46px;
     font-weight: 700;
     color: #B8CDDB;
     text-align: center;
 }
-.news-container p {
+.sw-container h2 span {
+    color: #f8bf02;
+}
+.sw-container p {
     font-size: 22px;
     font-weight: 400;
     color: #B8CDDB;
     text-align: center;
 }
-.news-container p a {
+.sw-container p a {
     text-decoration: underline;
 }
-.news {
+.sw-container-episode {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.sw-container-episode h3 {
+    font-size: 22px;
+    font-weight: 400;
+    margin-top: 20px;
+    color: #B8CDDB;
+    text-align: center;
+}
+.episode {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    vertical-align: middle;
+    margin-top: 10px;
+}  
+.episode select {
+    padding: 10px;
+    padding-right: 15px;
+    background-color: #f8bf02;
+    color: #0c0c0c;
+    font-family: 'Saira Condensed', sans-serif;
+    font-weight:700;
+    font-size: inherit;
+    border-radius: 3px;
+} 
+.episode::before,
+.episode::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+} 
+.episode::before {
+    width: 20px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 0 3px 3px 0;
+}
+.episode select option {
+    font-family: 'Saira Condensed', sans-serif;
+    font-weight:700;
+}
+.episode select[disabled] {
+    color: rgba(0,0,0,.3);
+}
+  
+.episode select[disabled]::after {
+    color: rgba(0,0,0,.1);
+}
+.episode::before {
+    background-color: rgba(0,0,0,.15);
+}
+  
+.episode::after {
+    color: rgba(0,0,0,.4);
+}
+.show-char{
+    width: 100px;
+    height: 40px;
+    margin: 10px 0;
+    background: none;
+    border: 1px solid #B8CDDB;
+    border-radius: 3px;
+    font-family: 'Saira Condensed', sans-serif;
+    font-weight:700;
+    line-height: 40px;
+    text-align: center;
+    color: #B8CDDB;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.sw {
     width: 100%;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
 }
-.news-item {
+.sw-item {
     width: 40%;
     margin: 20px;
     display: flex;
@@ -147,32 +230,17 @@ body {
     padding: 10px;
     box-sizing: border-box;
 }
-.news-item h2 {
+.sw-item h2 {
     margin-bottom: 10px;
     font-size: 28px;
 }
-.news-item p {
+.sw-item p {
     margin-bottom: 10px;
     font-size: 20px;
-}
-.news-item img {
-    width: 60%;
-    margin-bottom: 10px;
-}
-.news-item a {
-    width: 100px;
-    border: 1px solid #B8CDDB;
-    text-align: center;
-    font-size: 20px;
-    color: #B8CDDB;
-}
-.news-item a:hover {
-    background: #B8CDDB;
-    color: #0c0c0c;
 }
 .footer {
     width: 100%;
-    height: 100vh;
+    margin: 100px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -197,7 +265,8 @@ body {
     color: #B8CDDB;
     background-color: #0c0c0c;
 }
-.form-firstname::placeholder, .form-secondname::placeholder, .form-phone::placeholder, .form-email::placeholder {
+.form-firstname, .form-secondname {margin: 10px 0;}
+.form-firstname::placeholder, .form-secondname::placeholder, .form-phone::placeholder, .form-email::placeholder, .feedback-form form textarea::placeholder {
     font-family: 'Saira Condensed', sans-serif;
     color: #B8CDDB;
 }
@@ -212,17 +281,30 @@ body {
 .form-phone, .form-email {
     width: 45%;
     height: 40px;
+    margin: 10px 0;
     border: 1px solid #B8CDDB;
     box-sizing: border-box;
     color: #B8CDDB;
     background-color: #0c0c0c;
 } 
 .feedback-form form textarea {
-    width: 90%;
+    width: 94%;
+    resize: none;
+    background: none;
+    border: 1px solid #B8CDDB;
+    box-sizing: border-box;
+    color: #B8CDDB;
 }
 .form-button {
     width: 150px;
+    height: 30px;
+    margin: 10px 0;
     display: block;
+    background: none;
+    border: 1px solid #B8CDDB;
+    box-sizing: border-box;
+    color: #B8CDDB;
+    cursor: pointer;
 }
 
 .sn-list {
@@ -230,6 +312,7 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: start;
+    margin-top: 20px;
 }
 .sn-list-item {
     width: 40px;

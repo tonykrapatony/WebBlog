@@ -28,12 +28,12 @@
         </div>
         <section class="header">
             <nav class="nav">
-                <a href="./inedx.html" class="nav_logo">
+                <a href="index.html" class="nav_logo">
                     <img src="./img/logo2.png" alt="logo image">
                     <span class="hover">web blog</span>
                 </a>
                 <div class="nav__menu">
-                    <a href="./inedx.html" class="nav__menu-item">About</a>
+                    <a href="index.html" class="nav__menu-item">About</a>
                     <a href="#articles" class="nav__menu-item">Articles</a>
                     <a href="#contacts" class="nav__menu-item">Contacts</a>
                 </div>
@@ -116,24 +116,40 @@
                   </div>
             </div>
 
-            <div class="news-container">
-                <h2>Some news</h2>
-                <p>In this block I used <a href="https://newsapi.org/">newsapi.org</a></p>
-                <div class="news">
+            <div class="sw-container">
+                <h2>Сharacters from <span>Star Wars</span></h2>
+                <p>In this block I used <a href="https://swapi.dev/">swapi.dev</a></p>
+                <div class="sw-container-episode">
+                    <h3>Select episode</h3>
+                    <div class="episode">
+                        <select id="ep">
+                            <option value="1">Episode 1</option>
+                            <option value="2">Episode 2</option>
+                            <option value="3">Episode 3</option>
+                            <option value="4">Episode 4</option>
+                            <option value="5">Episode 5</option>
+                            <option value="6">Episode 6</option>
+                            <option value="6">Episode 7</option>
+                            <option value="6">Episode 8</option>
+                        </select>
+                        <div class="show-char">Show charecters</div>
+                    </div>
                 </div>
+                <div class="sw"></div>
+
             </div>
 
         </section>
         <section class="footer">
             <a name="contacts"></a>
             <div class="feedback-form">
-                <form action="send.php">
-                    <input class="form-firstname" type="text" placeholder="First name">
-                    <input class="form-secondname" type="text" placeholder="Second name">
-                    <input class="form-phone" type="text" placeholder="Phone number">
-                    <input class="form-email" type="email" placeholder="Email">
-                    <textarea name="" id="" cols="30" rows="5"></textarea>
-                    <input class="form-button" type="button" value="Send">
+                <form class="fb-form" action="" novalidate>
+                    <input class="form-firstname fb-input" type="text" placeholder="First name">
+                    <input class="form-secondname fb-input" type="text" placeholder="Second name">
+                    <input class="form-phone fb-input fb-form-phone" type="text" placeholder="Phone number">
+                    <input class="form-email fb-input fb-form-emai" type="email" placeholder="Email">
+                    <textarea placeholder="Your message" cols="30" rows="5" maxlength="250"></textarea>
+                    <button class="form-button" type="submit">Send</button>
                 </form>
             </div>
             <div class="sn-list">
@@ -147,6 +163,7 @@
     
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./slick-1.8.1/slick/slick.min.js"></script>
+    <script src="./script/validation.js"></script>
     <script defer src="./script/script.js"></script>
 </body>
 </html>
