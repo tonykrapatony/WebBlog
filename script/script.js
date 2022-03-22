@@ -39,7 +39,32 @@ document.querySelector('.show-char').addEventListener('click', function(){
     }
 });
 
+let firstName = document.querySelector('.form-firstname').value,
+    secondName = document.querySelector('.form-secondname').value,
+    phone = document.querySelector('.form-phone').value,
+    email = document.querySelector('.form-email').value,
+    text = document.querySelector('.form-text').value;
 
+document.querySelector('.form-button').addEventListener('click', function(){
+    formVal();
+    let newWin = window.open("https://api.telegram.org/bot1529048680:AAGrVc1FwHn5itl5N3MS472eth_ibfrfG1w/sendMessage?chat_id=-648756262&text="+firstName+"          "+secondName+"          "+phone+"          "+email+"          "+text, "_blank");
+    function closeWin(){
+        newWin.close();
+    }
+    setTimeout(closeWin, 100);
+})
+
+// form validation
+
+// function formVal(){
+//     if (firstName === "") {
+//         alert("Enter your name");
+//     } else if (Number.isInteger(firstName)){
+//         alert("It can not be a number");
+//     } else {
+//         return firstName
+//     }
+// }
 
 
 let show_btn = document.querySelectorAll('.slide-btn');
