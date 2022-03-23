@@ -1,10 +1,44 @@
+document.querySelector('.burger').addEventListener('click', function(){
+    let elDisp = window.getComputedStyle(document.querySelector('.nav__menu')).display;
+    if (elDisp === 'none') {
+        document.querySelector('.nav').style.animation = 'bgToBig 2s ease-in-out forwards';
+        document.querySelector('.nav__menu').style.display = 'flex';
+        document.querySelector('.nav__menu').style.animation = 'showMenu 6s ease-in-out forwards';
+    } else {
+        document.querySelector('.nav').style.animation = 'bgToSmall 2s ease-in-out forwards';
+        document.querySelector('.nav__menu').style.animation = 'hideMenu 2s ease-in-out forwards';
+        function hideMenu(){
+            document.querySelector('.nav__menu').style.display = 'none';
+        }
+        setTimeout(hideMenu, 2000);
+    }
+});
+
+
 $(document).ready(function(){
     // slider
     $('.slider').slick({
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
-        dots: true
+        dots: true,
+        arrows: true,
+        speed: 300,
+        responsive: [
+            {
+            breakpoint: 1024,
+            settings: {
+                infinite: true,
+                dots: true
+            }
+            },
+            {
+            breakpoint: 426,
+            settings: {
+                dots: false
+            }
+            }
+        ]
     });
 });
 

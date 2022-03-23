@@ -37,3 +37,33 @@
     font-weight: 400;
     margin-bottom: 10px;
 }
+
+@media screen and (max-width: 426px) {
+    .article-wrap .close-btn {
+        width: 40px;
+        position: absolute;
+        top: 20px;
+        right: 10px;
+        cursor: pointer;
+    }
+    .article-wrap .close-btn img {
+        width: 100%;
+    }
+    .article {
+        padding: 10px;
+    }
+    .article h2 {
+        font-size: 26px;
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+    .article ul {
+        list-style: disc;
+        margin-left: 30px;
+    }
+    .article p, .article ul {
+        font-size: 16px;
+        font-weight: 400;
+        margin-bottom: 5px;
+    }
+}
