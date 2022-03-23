@@ -26,13 +26,6 @@ $(document).ready(function(){
         speed: 300,
         responsive: [
             {
-            breakpoint: 1024,
-            settings: {
-                infinite: true,
-                dots: true
-            }
-            },
-            {
             breakpoint: 426,
             settings: {
                 dots: false

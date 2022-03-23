@@ -8,7 +8,7 @@
 }
 .article {
     width: 80%;
-    height: 70%;
+    height: 80%;
     margin: 10%;
     padding: 30px;
     box-sizing: border-box;
@@ -37,17 +37,41 @@
     font-weight: 400;
     margin-bottom: 10px;
 }
-
-@media screen and (max-width: 426px) {
+@media screen and (max-width: 1024px) {
+    .article {
+        height: 90%;
+        margin: 5% 10%;
+    }
     .article-wrap .close-btn {
-        width: 40px;
-        position: absolute;
-        top: 20px;
+        top: 25px;
+        right: 15px;
+    }
+    .article h2 {
+        font-size: 30px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+    .article p, .article ul {
+        font-size: 20px;
+        font-weight: 400;
+        margin-bottom: 10px;
+    }
+}
+@media screen and (max-width: 769px) {
+    .article-wrap .close-btn {
+        width: 50px;
+        top: 15px;
         right: 10px;
-        cursor: pointer;
     }
     .article-wrap .close-btn img {
         width: 100%;
+    }
+}
+@media screen and (max-width: 500px) {
+    .article-wrap .close-btn {
+        width: 40px;
+        top: 15px;
+        right: 0;
     }
     .article {
         padding: 10px;
