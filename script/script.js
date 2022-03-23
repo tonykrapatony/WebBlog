@@ -39,32 +39,49 @@ document.querySelector('.show-char').addEventListener('click', function(){
     }
 });
 
-let firstName = document.querySelector('.form-firstname').value,
+let firstName, secondName, phone, email, text, newWin;
+
+function closeWin(a){
+    a.close();
+}
+function sendMessage(){
+    newWin = window.open("https://api.telegram.org/bot1529048680:AAGrVc1FwHn5itl5N3MS472eth_ibfrfG1w/sendMessage?chat_id=-648756262&text="+firstName+"          "+secondName+"          "+phone+"          "+email+"          "+text, "_blank");
+    setTimeout(closeWin, 100, newWin);
+}
+
+function validation(){
+    firstName = document.querySelector('.form-firstname').value,
     secondName = document.querySelector('.form-secondname').value,
     phone = document.querySelector('.form-phone').value,
     email = document.querySelector('.form-email').value,
     text = document.querySelector('.form-text').value;
+    let namePattern = /[A-z]|[a-z]/;
+        phonePattern = /[^\d]/;
+        emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if (firstName === ""){
+        alert("Enter your first name");
+    } else if (!firstName.match(namePattern)){
+        alert("Enter your first name without numbers");
+    } else if (secondName === ""){
+        alert("Enter your second name");
+    } else if (!secondName.match(namePattern)){
+        alert("Enter your second name without numbers");
+    } else if (phone === ""){
+        alert("Enter your phone number");
+    } else if (phone.match(phonePattern)){
+        alert("Enter your phone with numbes only");
+    } else if (email === ""){
+        alert("Enter your email");
+    } else if (!email.match(emailPattern)){
+        alert("Enter your email@email.com");
+    } else {
+        sendMessage();
+    }
+}
 
 document.querySelector('.form-button').addEventListener('click', function(){
-    formVal();
-    let newWin = window.open("https://api.telegram.org/bot1529048680:AAGrVc1FwHn5itl5N3MS472eth_ibfrfG1w/sendMessage?chat_id=-648756262&text="+firstName+"          "+secondName+"          "+phone+"          "+email+"          "+text, "_blank");
-    function closeWin(){
-        newWin.close();
-    }
-    setTimeout(closeWin, 100);
-})
-
-// form validation
-
-// function formVal(){
-//     if (firstName === "") {
-//         alert("Enter your name");
-//     } else if (Number.isInteger(firstName)){
-//         alert("It can not be a number");
-//     } else {
-//         return firstName
-//     }
-// }
+    validation();
+});
 
 
 let show_btn = document.querySelectorAll('.slide-btn');
