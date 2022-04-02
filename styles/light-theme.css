@@ -1,0 +1,17 @@
+.bg-light {
+    background-color: #B8CDDB;
+    color: #0c0c0c;
+}
+.bg-dark {
+    background-color: #0c0c0c;
+    color: #B8CDDB;
+}
+.border-light {
+    border: 2px solid #0c0c0c;
+}
+.border-dark {
+    border: 2px solid #B8CDDB;
+}
+.disp-none {
+    display: none;
+}

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./styles/main.css">
     <title>WebBlog</title>
 </head>
-<body>
+<body class="bg-dark">
     <div class="pageWrap">
         <div class="article-wrap">
             <div class="close-btn"><img src="./img/close_icon.png" alt="Close icon"></div>
@@ -27,15 +27,20 @@
             </div>
         </div>
         <section class="header">
-            <nav class="nav">
+            <nav class="nav bg-dark">
                 <a href="index.html" class="nav_logo">
-                    <img src="./img/logo2.png" alt="logo image">
+                    <img src="./img/logo1.png" alt="logo image">
                     <span class="hover">web blog</span>
                 </a>
                 <div class="nav__menu">
                     <a href="index.html" class="nav__menu-item">About</a>
                     <a href="#articles" class="nav__menu-item">Articles</a>
                     <a href="#contacts" class="nav__menu-item">Contacts</a>
+                    <div class="toggle-container">
+                        <div class="toggleLight">light</div> 
+                        <div class="toggleDark disp-none">dark</div>
+                        <input type="checkbox" id="toggle-button" class="toggle-button">
+                    </div>
                 </div>
                 <div class="burger">
                     <div></div>
@@ -121,13 +126,13 @@
                   </div>
             </div>
 
-            <div class="sw-container">
+            <div class="sw-container bg-dark">
                 <h2>Сharacters from <span>Star Wars</span></h2>
                 <p>In this block I used <a href="https://swapi.dev/">swapi.dev</a></p>
                 <div class="sw-container-episode">
                     <h3>Select episode</h3>
                     <div class="episode">
-                        <select id="ep">
+                        <select class="border-dark">
                             <option value="1">Episode 1</option>
                             <option value="2">Episode 2</option>
                             <option value="3">Episode 3</option>
@@ -137,7 +142,7 @@
                             <option value="6">Episode 7</option>
                             <option value="6">Episode 8</option>
                         </select>
-                        <div class="show-char">Show charecters</div>
+                        <div class="show-char bg-dark border-dark">Show charecters</div>
                     </div>
                 </div>
                 <div class="sw"></div>
@@ -148,7 +153,7 @@
         <section class="footer">
             <a name="contacts"></a>
             <div class="feedback-form">
-                <form class="fb-form" action="" novalidate>
+                <form class="fb-form fb-form-dark" action="" novalidate>
                     <input class="form-firstname fb-input" type="text" placeholder="First name">
                     <input class="form-secondname fb-input" type="text" placeholder="Second name">
                     <input class="form-phone fb-input fb-form-phone" type="text" placeholder="Phone number">
@@ -158,10 +163,10 @@
                 </form>
             </div>
             <div class="sn-list">
-                <a class="sn-list-item"><img src="./img/github.png" alt="github icon"></a>
-                <a class="sn-list-item"><img src="./img/linkedin.png" alt="linkedin icon"></a>
-                <a class="sn-list-item"><img src="./img/instagram.png" alt="instagram icon"></a>
-                <a class="sn-list-item"><img src="./img/facebook.png" alt="facebook icon"></a>
+                <a class="sn-list-item git"><img src="./img/github.png" alt="github icon"></a>
+                <a class="sn-list-item linkedin"><img src="./img/linkedin.png" alt="linkedin icon"></a>
+                <a class="sn-list-item inst"><img src="./img/instagram.png" alt="instagram icon"></a>
+                <a class="sn-list-item fb"><img src="./img/facebook.png" alt="facebook icon"></a>
             </div>
         </section>
     </div>
