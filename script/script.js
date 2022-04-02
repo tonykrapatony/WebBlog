@@ -129,7 +129,7 @@ document.querySelector('.form-button').addEventListener('click', function(){
 });
 
 let checkbox = document.querySelector('.toggle-button'),
-body = document.querySelector('body'),
+    body = document.querySelector('body'),
     nav = document.querySelector('.nav'),
     navLogo = document.querySelector('.nav_logo img'),
     navLogoSpan = document.querySelector('.nav_logo span'),
@@ -144,7 +144,8 @@ body = document.querySelector('body'),
     linkedinLogo = document.querySelector('.linkedin img'),
     instLogo = document.querySelector('.inst img'),
     fbLogo = document.querySelector('.fb img'),
-    burgerStick = document.querySelectorAll('.burger div');
+    burgerStick = document.querySelectorAll('.burger div'),
+    presentation = document.querySelector('.presentation');
 function lightTheme() {
     body.classList.remove('bg-dark');
     body.classList.add('bg-light');
@@ -177,6 +178,8 @@ function lightTheme() {
     burgerStick.forEach(el => {
         el.style.backgroundColor = 'rgb(12, 12, 12)';
     });
+    presentation.classList.remove('bg-dark');
+    presentation.classList.add('bg-light');
 }
 
 function darkTheme() {
@@ -210,6 +213,8 @@ function darkTheme() {
     burgerStick.forEach(el => {
         el.style.backgroundColor = 'rgb(184, 205, 219)';
     });
+    presentation.classList.add('bg-dark');
+    presentation.classList.remove('bg-light');
 }
 
 checkbox.addEventListener('change', function() {
