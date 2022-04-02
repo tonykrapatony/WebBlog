@@ -240,6 +240,7 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    margin-top: 70px;
 }
 .sw-item {
     width: 40%;
@@ -501,6 +502,12 @@
     }
 }
 @media screen and (max-width: 600px) {
+    .sw {
+        flex-direction: column;
+    }
+    .sw-item {
+        width: 90%;
+    }
     .feedback-form {
         width: 80%;
     }
