@@ -93,6 +93,11 @@ function sendMessage(){
     let xhttp = new XMLHttpRequest();
     xhttp.open("GET", url, true);
     xhttp.send(); 
+    document.querySelector('.form-firstname-label input').value = ""; 
+    document.querySelector('.form-secondname-label input').value = ""; 
+    document.querySelector('.form-phone-label input').value = ""; 
+    document.querySelector('.form-email-label input').value = "";
+    document.querySelector('.form-text').value = "";
 }
 
 function validation(){
@@ -100,27 +105,38 @@ function validation(){
     secondName = document.querySelector('.form-secondname').value,
     phone = document.querySelector('.form-phone').value,
     email = document.querySelector('.form-email').value,
-    text = document.querySelector('.form-text').value;
+    text = document.querySelector('.form-text').value,
+    inputVal = document.querySelectorAll('.fb-form div .fb-input').value;
     let namePattern = /[A-z]|[a-z]|[А-Я]|[а-я]/;
         phonePattern = /[^\d]/;
         emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
     if (firstName === ""){
-        alert("Enter your first name");
+        document.querySelector('.form-firstname-label span').innerHTML = "* Enter your first name";
     } else if (!firstName.match(namePattern)){
-        alert("Enter your first name without numbers");
+        document.querySelector('.form-firstname-label span').innerHTML = "* Enter your first name without numbers";
     } else if (secondName === ""){
-        alert("Enter your second name");
+        document.querySelector('.form-firstname-label span').innerHTML = " "; 
+        document.querySelector('.form-secondname-label span').innerHTML = "* Enter your second name"; 
     } else if (!secondName.match(namePattern)){
-        alert("Enter your second name without numbers");
+        document.querySelector('.form-firstname-label span').innerHTML = " "; 
+        document.querySelector('.form-secondname-label span').innerHTML = "* Enter your second name without numbers";
     } else if (phone === ""){
-        alert("Enter your phone number");
+        document.querySelector('.form-secondname-label span').innerHTML = " "; 
+        document.querySelector('.form-phone-label span').innerHTML = "* Enter your phone number";
     } else if (phone.match(phonePattern)){
-        alert("Enter your phone with numbes only");
+        document.querySelector('.form-secondname-label span').innerHTML = " "; 
+        document.querySelector('.form-phone-label span').innerHTML = "* Enter your phone with numbes only";
     } else if (email === ""){
-        alert("Enter your email");
+        document.querySelector('.form-phone-label span').innerHTML = " "; 
+        document.querySelector('.form-email-label span').innerHTML = "* Enter your email";
     } else if (!email.match(emailPattern)){
-        alert("Enter your email@email.com");
+        document.querySelector('.form-phone-label span').innerHTML = " "; 
+        document.querySelector('.form-email-label span').innerHTML = "* Enter your like email@email.com";
     } else {
+        document.querySelector('.form-firstname-label span').innerHTML = " "; 
+        document.querySelector('.form-secondname-label span').innerHTML = " "; 
+        document.querySelector('.form-phone-label span').innerHTML = " "; 
+        document.querySelector('.form-email-label span').innerHTML = " "; 
         sendMessage();
     }
 }
@@ -140,12 +156,14 @@ let checkbox = document.querySelector('.toggle-button'),
     swSelect = document.querySelector('.episode select'),
     showCharT = document.querySelector('.show-char'),
     fbForm = document.querySelector('.fb-form'),
+    feedback_form = document.querySelector('.feedback-form');
     gitLogo = document.querySelector('.git img'),
     linkedinLogo = document.querySelector('.linkedin img'),
     instLogo = document.querySelector('.inst img'),
     fbLogo = document.querySelector('.fb img'),
     burgerStick = document.querySelectorAll('.burger div'),
     presentation = document.querySelector('.presentation');
+
 function lightTheme() {
     body.classList.remove('bg-dark');
     body.classList.add('bg-light');
@@ -171,6 +189,8 @@ function lightTheme() {
     showCharT.classList.add('border-light');
     fbForm.classList.remove('fb-form-dark');
     fbForm.classList.add('fb-form-light');
+    feedback_form.classList.remove('bg-dark');
+    feedback_form.classList.add('bg-light');
     gitLogo.setAttribute('src', './img/github_1.png');
     linkedinLogo.setAttribute('src', './img/linkedin_1.png');
     instLogo.setAttribute('src', './img/instagram_1.png');
@@ -206,6 +226,8 @@ function darkTheme() {
     showCharT.classList.add('border-dark');
     fbForm.classList.remove('fb-form-light');
     fbForm.classList.add('fb-form-dark');
+    feedback_form.classList.add('bg-dark');
+    feedback_form.classList.remove('bg-light');
     gitLogo.setAttribute('src', './img/github.png');
     linkedinLogo.setAttribute('src', './img/linkedin.png');
     instLogo.setAttribute('src', './img/instagram.png');
