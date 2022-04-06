@@ -51,10 +51,18 @@ $(document).ready(function(){
         ]
     });
 });
-
-function getRandomArbitrary(min, max) {
-    return Math.floor(min + Math.random() * (max + 1 - min));
-} 
+// show article in slider
+let show_btn = document.querySelectorAll('.slide-btn');
+show_btn.forEach(element => {
+    element.addEventListener('click', function(){
+        document.querySelector('.article-wrap').style.display = 'block';
+        document.body.style.overflow = 'hidden'
+    })
+    document.querySelector('.close-btn').addEventListener('click', function(){
+        document.querySelector('.article-wrap').style.display = 'none';
+        document.body.style.overflow = 'auto'
+    })
+});
 // show starwars characters
 let result;
 function showChar() {
@@ -83,67 +91,75 @@ document.querySelector('.show-char').addEventListener('click', function(){
     }
 });
 
-// 
-let firstName, secondName, phone, email, text, newWin, url;
-function closeWin(a){
-    a.close();
+// validation and send form
+class Validation {
+    isName(value, pattern) {
+        if ( value === ""){
+            return document.querySelector('.form-firstname-label span').innerHTML = "* Enter your name";
+        } else if (!value.match(pattern) && value != "") {
+            return document.querySelector('.form-firstname-label span').innerHTML = "* Enter your name without numbers";
+        } else {
+            document.querySelector('.form-firstname-label span').innerHTML = "";
+            return true;
+        }
+    }
+    isSurname(value, pattern) {
+        if ( value === ""){
+            return document.querySelector('.form-secondname-label span').innerHTML = "* Enter your surname";
+        } else if (!value.match(pattern) && value != "") {
+            return document.querySelector('.form-secondname-label span').innerHTML = "* Enter your surname without numbers";
+        } else {
+            document.querySelector('.form-secondname-label span').innerHTML = "";
+            return true;
+        }
+    }
+    isEmail(value, pattern) {
+        if (value === "") {
+            return document.querySelector('.form-email-label span').innerHTML = "* Enter your email";
+        } else if (!value.match(pattern) && value != "") {
+            return document.querySelector('.form-email-label span').innerHTML = "* Enter your email correctly(eaxample@mail.com)";
+        } else {
+            document.querySelector('.form-email-label span').innerHTML = " ";
+            return true;
+        }
+    }
+    isPhone(value, pattern) {
+        if (value === "") {
+            document.querySelector('.form-phone-label span').innerHTML = "* Enter your phone number";
+        } else if (!value.match(pattern) && value != "") {
+            return document.querySelector('.form-phone-label span').innerHTML = '* Enter your name correctly "+1234567890"';
+        } else {
+            document.querySelector('.form-phone-label span').innerHTML = " ";
+            return true;
+        }
+    }
 }
 function sendMessage(){
-    url = "https://api.telegram.org/bot1529048680:AAGrVc1FwHn5itl5N3MS472eth_ibfrfG1w/sendMessage?chat_id=-648756262&text="+firstName+"        "+secondName+"        "+phone+"        "+email+"        "+text;
-    let xhttp = new XMLHttpRequest();
-    xhttp.open("GET", url, true);
-    xhttp.send(); 
-    document.querySelector('.form-firstname-label input').value = ""; 
-    document.querySelector('.form-secondname-label input').value = ""; 
-    document.querySelector('.form-phone-label input').value = ""; 
-    document.querySelector('.form-email-label input').value = "";
-    document.querySelector('.form-text').value = "";
-}
-
-function validation(){
-    firstName = document.querySelector('.form-firstname').value,
-    secondName = document.querySelector('.form-secondname').value,
-    phone = document.querySelector('.form-phone').value,
-    email = document.querySelector('.form-email').value,
-    text = document.querySelector('.form-text').value,
-    inputVal = document.querySelectorAll('.fb-form div .fb-input').value;
-    let namePattern = /[A-z]|[a-z]|[А-Я]|[а-я]/;
-        phonePattern = /[^\d]/;
-        emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-    if (firstName === ""){
-        document.querySelector('.form-firstname-label span').innerHTML = "* Enter your first name";
-    } else if (!firstName.match(namePattern)){
-        document.querySelector('.form-firstname-label span').innerHTML = "* Enter your first name without numbers";
-    } else if (secondName === ""){
-        document.querySelector('.form-firstname-label span').innerHTML = " "; 
-        document.querySelector('.form-secondname-label span').innerHTML = "* Enter your second name"; 
-    } else if (!secondName.match(namePattern)){
-        document.querySelector('.form-firstname-label span').innerHTML = " "; 
-        document.querySelector('.form-secondname-label span').innerHTML = "* Enter your second name without numbers";
-    } else if (phone === ""){
-        document.querySelector('.form-secondname-label span').innerHTML = " "; 
-        document.querySelector('.form-phone-label span').innerHTML = "* Enter your phone number";
-    } else if (phone.match(phonePattern)){
-        document.querySelector('.form-secondname-label span').innerHTML = " "; 
-        document.querySelector('.form-phone-label span').innerHTML = "* Enter your phone with numbes only";
-    } else if (email === ""){
-        document.querySelector('.form-phone-label span').innerHTML = " "; 
-        document.querySelector('.form-email-label span').innerHTML = "* Enter your email";
-    } else if (!email.match(emailPattern)){
-        document.querySelector('.form-phone-label span').innerHTML = " "; 
-        document.querySelector('.form-email-label span').innerHTML = "* Enter your like email@email.com";
-    } else {
-        document.querySelector('.form-firstname-label span').innerHTML = " "; 
-        document.querySelector('.form-secondname-label span').innerHTML = " "; 
-        document.querySelector('.form-phone-label span').innerHTML = " "; 
-        document.querySelector('.form-email-label span').innerHTML = " "; 
-        sendMessage();
+    let name = document.querySelector('.form-firstname').value,
+        surname = document.querySelector('.form-secondname').value,
+        phone = document.querySelector('.form-phone').value,
+        email = document.querySelector('.form-email').value,
+        text = document.querySelector('.form-text').value,
+        patternName = /[A-z]|[a-z]|[А-Я]|[а-я]/,
+        patternEmail = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/,
+        patternPhone = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/,
+    validation = new Validation();
+    if (validation.isName(name, patternName)==true && validation.isSurname(surname, patternName)===true && validation.isPhone(phone, patternPhone)==true && validation.isEmail(email, patternEmail)=== true) {
+        let url = "https://api.telegram.org/bot1529048680:AAGrVc1FwHn5itl5N3MS472eth_ibfrfG1w/sendMessage?chat_id=-648756262&text="+name+"        "+surname+"        "+phone+"        "+email+"        "+text;
+        let xhttp = new XMLHttpRequest();
+        xhttp.open("GET", url, true);
+        xhttp.send(); 
+        document.querySelector('.form-firstname-label input').value = ""; 
+        document.querySelector('.form-secondname-label input').value = ""; 
+        document.querySelector('.form-phone-label input').value = ""; 
+        document.querySelector('.form-email-label input').value = "";
+        document.querySelector('.form-text').value = "";
     }
 }
 document.querySelector('.form-button').addEventListener('click', function(){
-    validation();
+    sendMessage();
 });
-
+//theme switch
 let checkbox = document.querySelector('.toggle-button'),
     body = document.querySelector('body'),
     nav = document.querySelector('.nav'),
@@ -163,7 +179,6 @@ let checkbox = document.querySelector('.toggle-button'),
     fbLogo = document.querySelector('.fb img'),
     burgerStick = document.querySelectorAll('.burger div'),
     presentation = document.querySelector('.presentation');
-
 function lightTheme() {
     body.classList.remove('bg-dark');
     body.classList.add('bg-light');
@@ -238,7 +253,6 @@ function darkTheme() {
     presentation.classList.add('bg-dark');
     presentation.classList.remove('bg-light');
 }
-
 checkbox.addEventListener('change', function() {
     if (this.checked) {
         lightTheme();
@@ -246,16 +260,6 @@ checkbox.addEventListener('change', function() {
         darkTheme();
     }
 })
-let show_btn = document.querySelectorAll('.slide-btn');
-show_btn.forEach(element => {
-    element.addEventListener('click', function(){
-        document.querySelector('.article-wrap').style.display = 'block';
-        document.body.style.overflow = 'hidden'
-    })
-    document.querySelector('.close-btn').addEventListener('click', function(){
-        document.querySelector('.article-wrap').style.display = 'none';
-        document.body.style.overflow = 'auto'
-    })
-});
+
 
 
