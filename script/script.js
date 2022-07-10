@@ -63,32 +63,65 @@ show_btn.forEach(element => {
         document.body.style.overflow = 'auto'
     })
 });
-// show starwars characters
-let result;
-function showChar() {
-    let ep = document.getElementById('ep');
-    let ep_num = ep.value;
-    const url = `https://swapi.dev/api/people/?page=${ep_num}`;  
-    $.getJSON( url, function( data ) {
-        for(let key in data.results){
-            let name = data.results[key].name;
-            let height = data.results[key].height;
-            let mass = data.results[key].mass;
-            let gender = data.results[key].gender;
-            let char = `<div class="sw-item"><h2>${name}</h2><p>Height: ${height}</p><p>Mass: ${mass}</p><p>Gender: ${gender}</p></div>`;
-            result += char;
-            $('.sw').html(result);
-        }
-    });
-};
-document.querySelector('.show-char').addEventListener('click', function(){
-    if (result != "") {
-        result = "";
-        console.log(result);
-        showChar();
-    } else {
-        showChar();
+// // show starwars characters
+class Characters {
+	constructor(url, ep_num) {
+        this.fullUrl = url+ep_num;
+        this.chars = {};
+	}
+
+	getCharacters() {
+		fetch(this.fullUrl)
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            this.chars = data.results;
+            console.log(this.chars);
+            this.renderCharacters(this.chars);
+        })
+	}
+    renderCharacters(obj) {
+        console.log(obj);
+        let result = "";
+        obj.forEach(el => {
+            console.log(el);
+            result += `<div class="sw-item"><h2>${el.name}</h2><p>Height: ${el.height}</p><p>Mass: ${el.mass}</p><p>Gender: ${el.gender}</p></div>`;
+        });
+        document.querySelector('.sw').innerHTML = result;
     }
+}
+
+// let result;
+// function showChar() {
+//     let ep = document.getElementById('ep');
+//     let ep_num = ep.value;
+//     const url = `https://swapi.dev/api/people/?page=${ep_num}`;  
+//     $.getJSON( url, function( data ) {
+//         for(let key in data.results){
+//             let name = data.results[key].name;
+//             let height = data.results[key].height;
+//             let mass = data.results[key].mass;
+//             let gender = data.results[key].gender;
+//             let char = `<div class="sw-item"><h2>${name}</h2><p>Height: ${height}</p><p>Mass: ${mass}</p><p>Gender: ${gender}</p></div>`;
+//             result += char;
+//             $('.sw').html(result);
+//         }
+//     });
+// };
+document.querySelector('.show-char').addEventListener('click', function(){
+    let url = 'https://swapi.dev/api/people/?page=',
+        selectVal = document.querySelector('.episode-select').value;
+        console.log(selectVal);
+        document.querySelector('.sw').innerHTML = `<div class="progress">
+                                                        <div class="progress-circle-lg">
+                                                            <div class="progress-circle-sm"></div>
+                                                        </div>
+                                                    </div>`;
+        let characters = new Characters(url, selectVal);
+        setTimeout(() => {
+            characters.getCharacters();
+        }, 3000);
 });
 
 // validation and send form
@@ -147,7 +180,7 @@ function sendMessage(){
     if (validation.isName(name, patternName)==true && validation.isSurname(surname, patternName)===true && validation.isPhone(phone, patternPhone)==true && validation.isEmail(email, patternEmail)=== true) {
         let url = "https://api.telegram.org/bot1529048680:AAGrVc1FwHn5itl5N3MS472eth_ibfrfG1w/sendMessage?chat_id=-648756262&text="+name+"        "+surname+"        "+phone+"        "+email+"        "+text;
         let xhttp = new XMLHttpRequest();
-        xhttp.open("GET", url, true);
+        xhttp.open("POST", url, true);
         xhttp.send(); 
         document.querySelector('.form-firstname-label input').value = ""; 
         document.querySelector('.form-secondname-label input').value = ""; 
