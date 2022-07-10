@@ -77,7 +77,6 @@ class Characters {
         })
         .then(data => {
             this.chars = data.results;
-            console.log(this.chars);
             this.renderCharacters(this.chars);
         })
 	}
@@ -85,7 +84,6 @@ class Characters {
         console.log(obj);
         let result = "";
         obj.forEach(el => {
-            console.log(el);
             result += `<div class="sw-item"><h2>${el.name}</h2><p>Height: ${el.height}</p><p>Mass: ${el.mass}</p><p>Gender: ${el.gender}</p></div>`;
         });
         document.querySelector('.sw').innerHTML = result;
